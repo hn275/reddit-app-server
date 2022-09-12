@@ -9,3 +9,10 @@ be expanding the project
 
 Some API endpoints are set up for just frontend stuff at the moment,
 but I will update this README as we go along.
+
+## API for posts
+
+Raw API response from Reddit has a lot of information that would not be needed
+for this project.
+
+Relevent data has been extracted and documented [here](./docs/reddit-posts-api.md).
