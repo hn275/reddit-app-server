@@ -1,7 +1,7 @@
 const postsRoute = require('express').Router();
 const axios = require('axios');
 const REDDIT_URL = require('../url'); // fetch URL
-const { parseResponse, parseReponse } = require('./util');
+const { parseResponse } = require('./util');
 
 postsRoute.get('/:type', async (req, res, next) => {
   try {
@@ -22,8 +22,8 @@ postsRoute.get('/:type', async (req, res, next) => {
       fetchUrl += `/${type}.json`;
       // fetchUrl += '?geo_filter=CA'; // Potentially no geo filter
       const response = await axios.get(fetchUrl);
-      const parsedReponse = parseReponse(response.data);
-      res.json(parsedReponse);
+      const parsedResponse = parseResponse(response.data);
+      res.json(parsedResponse);
     }
   } catch (error) {
     next(error);

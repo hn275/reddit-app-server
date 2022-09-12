@@ -14,7 +14,7 @@ const parseMedia = (mediaObject) => {
   }
 };
 
-const parseReponse = (responseJson) => {
+const parseResponse = (responseJson) => {
   /**
    * @params {object} responseJson: json object received from get request
    * return: filtered out data, extracting relavent information
@@ -40,5 +40,5 @@ const parseReponse = (responseJson) => {
 };
 
 module.exports = {
-  parseReponse: parseReponse,
+  parseResponse: parseResponse,
 };
