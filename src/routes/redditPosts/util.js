@@ -29,6 +29,7 @@ const parseReponse = (responseJson) => {
       subreddit: post.subreddit_name_prefixed,
       voteScore: post.score,
       id: `t3_${post.id}`,
+      url: post.url || null,
       author: post.author,
       commentCount: post.num_comments,
       isVideo: post.is_video,
