@@ -25,10 +25,11 @@ const parseResponse = (responseJson) => {
   const allParsedPost = responsePosts.map((postInfo) => {
     const post = postInfo.data;
     return {
+      type: 't3',
       title: post.title,
       subreddit: post.subreddit_name_prefixed,
       voteScore: post.score,
-      id: `t3_${post.id}`,
+      id: post.id,
       url: post.url || null,
       author: post.author,
       commentCount: post.num_comments,
