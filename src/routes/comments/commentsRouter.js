@@ -1,9 +1,9 @@
-const commentRouter = require('express').Router();
+const commentsRouter = require('express').Router();
 const axios = require('axios');
-const { parseComments } = require('./utils');
+const { parseComments } = require('./util');
 const REDDIT_URL = require('../url');
 
-commentRouter.get('/:postId', async (req, res, next) => {
+commentsRouter.get('/:postId', async (req, res, next) => {
   const { postId } = req.params;
   let fetchingUrl = REDDIT_URL;
   fetchingUrl += '/comments';
@@ -19,4 +19,4 @@ commentRouter.get('/:postId', async (req, res, next) => {
   }
 });
 
-module.exports = commentRouter;
+module.exports = commentsRouter;

@@ -1,9 +1,9 @@
-const postsRoute = require('express').Router();
+const linksRouter = require('express').Router();
 const axios = require('axios');
 const REDDIT_URL = require('../url'); // fetch URL
 const { parseResponse } = require('./util');
 
-postsRoute.get('/:type', async (req, res, next) => {
+linksRouter.get('/:type', async (req, res, next) => {
   try {
     const allowedTypes = ['hot', 'rising', 'new', 'top']; // allowed param
     const { type } = req.params;
@@ -30,4 +30,4 @@ postsRoute.get('/:type', async (req, res, next) => {
   }
 });
 
-module.exports = postsRoute;
+module.exports = linksRouter;

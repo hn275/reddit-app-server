@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const postsRoute = require('./routes/redditPosts');
-const commentsRoute = require('./routes/comments/commentRoute');
+const linksRouter = require('./routes/links/linksRouter');
+const commentsRouter = require('./routes/comments/commentsRouter');
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
@@ -20,10 +20,10 @@ app.get('/', (req, res) => {
 
 // Posts Route
 // handle `top`, `hot`, `rising`, `new`
-app.use('/posts', postsRoute);
+app.use('/posts', linksRouter);
 
 // Comments route
-app.use('/comments', commentsRoute);
+app.use('/comments', commentsRouter);
 
 // Error handling
 app.use((err, req, res, next) => {

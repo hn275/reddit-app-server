@@ -1,4 +1,4 @@
-const parsedReplies = (replies) => {
+const parseReplies = (replies) => {
   if (!replies) return []; // if a comment does not have any response
   console.log(replies.data.children); // TODO: dynamic search for all depths :/
   // return replies.map((reply) => {
@@ -24,7 +24,7 @@ const parseComments = (commentObject) => {
       bodyHtml: commentData.body_html,
       body: commentData.body,
       voteScore: commentData.ups,
-      replies: parsedReplies(commentData.replies),
+      replies: parseReplies(commentData.replies),
     };
   });
   // return {};
