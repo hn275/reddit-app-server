@@ -1,11 +1,17 @@
 # API for general posts
 
-- `hot`
-- `top`
-- `rising`
-- `new`
+## Get request endpoints
 
-## API Response
+Request should be made to `http://localhost:3001` as this is the dev server.
+
+Available endpoints:
+
+- `/hot`
+- `/top`
+- `/rising`
+- `/new`
+
+## API Responses
 
 API responses with an **array of objects**.
 
