@@ -5,10 +5,9 @@
   "description": "server for a reddit client",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/server.js"
   },
-  "author": "HalN",
+  "author": "Hal",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
