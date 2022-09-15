@@ -19,3 +19,14 @@ Relevent data has been extracted and [documented](./docs).
 4. Nodemon (dev dependency): hot reload server on bufwrite.
 
 Don't forget to `npm i` after cloning to install dependencies :).
+
+### TODO
+
+- Creating endpoints:
+  - [x] GET: all posts.
+  - [x] GET: comments.
+  - [ ] GET: search function.
+  - [ ] OAuth2Authenticate.
+    - [ ] POST: votes.
+    - [ ] POST: comments/replies.
+- [ ] Database to store user token (PostGreSQL or MongoDB?).
