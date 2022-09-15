@@ -15,15 +15,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({ origin: CLIENT_URL }));
 
 app.get('/', (req, res) => {
-  res.json('heloworld');
+  // In case some server may take a couple moments to get started.
+  // This could be used to make a splash/loading screen.
+  const serverRes = {
+    status: 'ok',
+    message: 'hello world',
+  };
+  res.status(200).json(serverRes);
 });
 
 // Posts Route
-// handle `top`, `hot`, `rising`, `new`
 app.use('/posts', linksRouter);
 
 // Comments route
 app.use('/comments', commentsRouter);
+
+// Invalid route
+app.use('/*', (req, res, next) => {
+  const error = new Error('Invalid endpoint');
+  error.status = 400;
+  next(error);
+});
 
 // Error handling
 app.use((err, req, res, next) => {

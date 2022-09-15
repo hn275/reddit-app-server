@@ -7,17 +7,16 @@ linksRouter.get('/:type', async (req, res, next) => {
   try {
     const allowedTypes = ['hot', 'rising', 'new', 'top']; // allowed param
     const { type } = req.params;
-    console.log(type);
 
-    if (!allowedTypes.includes(type)) {
-      // if request params is not of `allowedTypes`
+    if (!allowedTypes.includes(type) || !type) {
+      // if request params is not of `allowedTypes` or if it does not contain any `type`
       const error = new Error(
-        'Invalid request. Allowed post types are: hot, new, top, rising'
+        'Invalid request, a "type" must be included. Allowed post types are: hot, new, top, rising'
       );
-      error.status = 404;
+      error.status = 400;
       next(error); // send to error handling middleware
     } else {
-      // fetch data and send it back
+      // Build fetch url
       let fetchUrl = REDDIT_URL;
       fetchUrl += `/${type}.json`;
       // fetchUrl += '?geo_filter=CA'; // Potentially no geo filter
