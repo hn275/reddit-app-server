@@ -7,4 +7,4 @@ Server for a reddit client, this client repo is hosted [here](https://github.com
 Raw API response from Reddit has a lot of information that would not be needed
 for this project.
 
-Relevent data has been extracted and documented [here](./docs/reddit-posts-api.md).
+Relevent data has been extracted and documented [here](./docs).
