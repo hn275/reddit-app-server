@@ -38,7 +38,6 @@ commentsRouter.get('/*', (req, res, next) => {
     'This endpoint required and "id" and optionally a query string. Missing "id"'
   );
   error.status = 400;
-  console.log(error.message);
   next(error);
 });
 
