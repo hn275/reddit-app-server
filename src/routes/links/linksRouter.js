@@ -27,7 +27,7 @@ linksRouter.get('/more', async (req, res, next) => {
     // Build fetch url
     let fetchUrl = REDDIT_URL;
     fetchUrl += `/${type}.json`;
-    fetchUrl += `?after=${after}`;
+    fetchUrl += `?after=t3_${after}`;
     if (count) fetchUrl += `&count=${count}`;
 
     // Fetch
