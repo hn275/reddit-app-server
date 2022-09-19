@@ -44,3 +44,5 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message: errorMessage });
 });
 app.listen(PORT, () => console.log(`server live on port ${PORT}`));
+
+module.exports = app;
