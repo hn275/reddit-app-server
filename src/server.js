@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const linksRouter = require('./routes/links/linksRouter');
 const commentsRouter = require('./routes/comments/commentsRouter');
+const searchRouter = require('./routes/search/searchRouter');
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
@@ -29,6 +30,9 @@ app.use('/posts', linksRouter);
 
 // Comments route
 app.use('/comments', commentsRouter);
+
+// Search route
+app.use('/search', searchRouter);
 
 // Invalid route
 app.use('/*', (req, res, next) => {
