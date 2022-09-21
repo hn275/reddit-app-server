@@ -55,6 +55,4 @@ const parseResponse = (responseJson) => {
   return allParsedPost;
 };
 
-module.exports = {
-  parseResponse: parseResponse,
-};
+module.exports = parseResponse;
