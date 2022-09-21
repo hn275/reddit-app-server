@@ -1,11 +1,22 @@
 const searchRouter = require('express').Router();
 const axios = require('axios');
-const whiteSpaceParse = require('./utils/whiteSpaceParse');
+const getWhiteSpace = require('./utils/getWhiteSpace');
+const URL = require('../url');
 
-searchRouter.get('/', (req, res, next) => {
+searchRouter.get('/', async (req, res, next) => {
   try {
-    const searchString = req.body.searchString;
-    res.json(whiteSpaceParse(searchString));
+    // sanitize search string
+    const search = req.body.search;
+
+    let fetchingUrl = URL;
+    fetchingUrl += '/search.json';
+    fetchingUrl += `?q=${getWhiteSpace(search)}`;
+    fetchingUrl += `&limit=15`;
+    fetchingUrl += '&sort=top';
+    fetchingUrl += '&t=week';
+
+    const redditResponse = await axios.get(fetchingUrl);
+    res.json(redditResponse.data);
   } catch (e) {
     next(e);
   }
