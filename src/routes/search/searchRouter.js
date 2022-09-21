@@ -7,6 +7,11 @@ searchRouter.get('/', async (req, res, next) => {
   try {
     // sanitize search string
     const search = req.body.search;
+    if (!search) {
+      const error = new Error('Missing search query');
+      error.status = 400;
+      return next(error);
+    }
 
     let fetchingUrl = URL;
     fetchingUrl += '/search.json';

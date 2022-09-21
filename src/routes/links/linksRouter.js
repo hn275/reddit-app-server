@@ -12,7 +12,7 @@ linksRouter.get('/more', async (req, res, next) => {
     if (!after || !type) {
       const error = new Error('Request body requires 2 props: after, and type');
       error.status = 400;
-      next(error);
+      return next(error);
     }
 
     // If type is not of `allowedType`
@@ -21,7 +21,7 @@ linksRouter.get('/more', async (req, res, next) => {
         'Invalid post type. Allowed types are: hot, rising, new, top'
       );
       error.status = 400;
-      next(error);
+      return next(error);
     }
 
     // Build fetch url
@@ -38,7 +38,7 @@ linksRouter.get('/more', async (req, res, next) => {
     const requestedPosts = count || 10; // default to 10 posts
     res.json(parsedResponse.slice(0, Number(requestedPosts)));
   } catch (error) {
-    next(error);
+    return next(error);
   }
 });
 
@@ -52,7 +52,7 @@ linksRouter.get('/:type', async (req, res, next) => {
         'Invalid request, a "type" must be included. Allowed post types are: hot, new, top, rising'
       );
       error.status = 400;
-      next(error); // send to error handling middleware
+      return next(error); // send to error handling middleware
     } else {
       // Build fetch url
       let fetchUrl = REDDIT_URL;
@@ -67,7 +67,7 @@ linksRouter.get('/:type', async (req, res, next) => {
       res.json(parsedResponse);
     }
   } catch (error) {
-    next(error);
+    return next(error);
   }
 });
 
