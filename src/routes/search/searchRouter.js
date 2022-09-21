@@ -7,7 +7,7 @@ const getSearchType = require('./utils/getSearchType');
 
 searchRouter.get('/', async (req, res, next) => {
   try {
-    // sanitize search string
+    // Send back error if request body is missing data
     const { search, type } = req.body;
     if (!search || !type) {
       const error = new Error(
@@ -17,15 +17,16 @@ searchRouter.get('/', async (req, res, next) => {
       return next(error);
     }
 
-    const searchParsed = getWhiteSpace(search);
-    const typeParsed = getSearchType(type);
+    const searchFormatted = getWhiteSpace(search);
+    const typeFormatted = getSearchType(type);
 
     let fetchingUrl = URL;
     fetchingUrl += '/search.json';
-    fetchingUrl += `?q=${searchParsed}`;
+    fetchingUrl += `?q=${searchFormatted}`;
     fetchingUrl += `&limit=15`;
     fetchingUrl += '&sort=top';
     fetchingUrl += '&t=week';
+    fetchingUrl += `&type=${typeFormatted}`;
 
     const redditResponse = await axios.get(fetchingUrl);
     const redditData = redditResponse.data.data.children;
