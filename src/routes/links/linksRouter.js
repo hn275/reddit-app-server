@@ -1,7 +1,7 @@
 const linksRouter = require('express').Router();
 const axios = require('axios');
 const REDDIT_URL = require('../url'); // fetch URL
-const { parseResponse } = require('./util');
+const parseResponse = require('./util/parseResponse.js');
 
 const allowedTypes = ['hot', 'rising', 'new', 'top']; // allowed param
 
