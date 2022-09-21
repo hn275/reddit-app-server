@@ -9,7 +9,7 @@ The client repo is hosted [here](https://github.com/Chuck-Gibson/reddit-app).
 Raw API response from Reddit has a lot of information that would not be needed
 for this project.
 
-Relevent data has been extracted and [documented](./docs).
+Relevent data has been extracted and [documented](./docs/API.md).
 
 ## Dependencies
 
@@ -25,7 +25,7 @@ Don't forget to `npm i` after cloning to install dependencies :).
 - Creating endpoints:
   - [x] GET: all posts.
   - [x] GET: comments.
-  - [ ] GET: search function.
+  - [x] GET: search function.
   - [ ] OAuth2Authenticate.
     - [ ] POST: votes.
     - [ ] POST: comments/replies.
