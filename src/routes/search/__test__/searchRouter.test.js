@@ -17,12 +17,13 @@ describe('/search endpoint', () => {
       });
   });
 
-  it('made searches successfully', () => {
+  it('made searches successfully', (done) => {
     chai
       .request(server)
       .get('/search')
       .send({
         search: 'foobar',
+        type: 'subreddit',
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
