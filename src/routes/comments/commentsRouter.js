@@ -9,6 +9,7 @@ commentsRouter.get('/:postId', async (req, res, next) => {
   fetchingUrl += '/comments';
   fetchingUrl += `/${postId}`;
   fetchingUrl += '.json';
+  console.log("fetching comments for " + postId + " from " + fetchingUrl)
   try {
     const redditResponse = await axios.get(fetchingUrl);
     const parsedRedditResponse = parseComments(redditResponse.data);

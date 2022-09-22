@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const linksRouter = require('./routes/links/linksRouter');
 const commentsRouter = require('./routes/comments/commentsRouter');
+const helmet = require('helmet');
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
@@ -13,6 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // CORS
 app.use(cors({ origin: CLIENT_URL }));
+
+//sucrity package
+app.use(helmet());
 
 app.get('/', (req, res) => {
   res.json('heloworld');

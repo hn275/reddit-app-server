@@ -1,22 +1,24 @@
 const parseReplies = (replies) => {
-  if (!replies) return []; // if a comment does not have any response
-  console.log(replies.data.children); // TODO: dynamic search for all depths :/
-  // return replies.map((reply) => {
-  //   const replyData = reply.data;
-  //   return {
-  //     id: replyData.id,
-  //     count: replyData.count,
-  //     depth: replyData.depth,
-  //     children: replyData.children,
-  //   };
-  // });
-};
+  if (!replies) {return "";}
+  else { // if a comment does not have any response
+  const replyData = replies.data.children;
+  return replyData.map((reply) => {
+     return {
+      type: reply.data.kind,
+      id: reply.data.id,
+      author: reply.data.author,
+      bodyHtml: reply.data.body_html,
+      body: reply.data.body,
+      voteScore: reply.data.ups,
+      replies: parseReplies(reply.data.replies)
+     };
+ });
+}}; 
 
 const parseComments = (commentObject) => {
   const allComments = commentObject[1].data.children;
-  // console.log(allComments);
   const parsedComments = allComments.map((comment) => {
-    const commentData = comment.data;
+     const commentData = comment.data;
     return {
       type: comment.kind,
       id: commentData.id,
