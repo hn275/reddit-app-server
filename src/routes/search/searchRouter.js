@@ -8,7 +8,7 @@ const getSearchType = require('./utils/getSearchType');
 searchRouter.get('/', async (req, res, next) => {
   try {
     // Send back error if request body is missing data
-    const { search, type } = req.body;
+    const { search, type } = req.query;
     if (!search || !type) {
       const error = new Error(
         'Missing search query, required `search` and `searchType`'
