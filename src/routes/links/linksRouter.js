@@ -4,6 +4,7 @@ import REDDIT_URL from '../url.js';
 import parseResponse from './util/parseResponse.js';
 
 // 'hot', 'rising', 'new', 'top'
+const allowedTypes = ['hot', 'rising', 'new', 'top'];
 const linksRouter = Router();
 
 linksRouter.get('/more', async (req, res, next) => {

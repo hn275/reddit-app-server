@@ -1,6 +1,8 @@
-const getWhiteSpace = require('../utils/getWhiteSpace');
-const getSearchType = require('../utils/getSearchType');
-const assert = require('chai').assert;
+// const getWhiteSpace = require('../utils/getWhiteSpace');
+// const getSearchType = require('../utils/getSearchType');
+// const assert = require('chai').assert;
+import { getWhiteSpace, getSearchType } from '../util/index.js';
+import { assert } from 'chai';
 
 describe('Search routes util functons tests', () => {
   describe('getWhiteSpace tests', () => {

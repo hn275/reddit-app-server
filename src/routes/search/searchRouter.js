@@ -22,6 +22,12 @@ searchRouter.get('/', async (req, res, next) => {
 
     const searchFormatted = getWhiteSpace(search);
     const typeFormatted = getSearchType(type);
+    // If the search is of the wrong type
+    if (!searchFormatted || !typeFormatted) {
+      const error = new Error('Search type can only be `posts` or `subreddit`');
+      error.status = 400;
+      return next(error);
+    }
 
     let fetchingUrl = REDDIT_URL;
     fetchingUrl += '/search.json';

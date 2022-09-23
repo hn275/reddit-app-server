@@ -1,18 +1,14 @@
-const assert = require('chai').assert;
-const chaiHttp = require('chai-http');
-const chai = require('chai');
-const server = require('../../../server');
-
-chai.use(chaiHttp);
+import server from '../../../server.js';
+// import supertest from 'supertest';
+import { supertest } from '../../test-util.js';
 
 describe('/comments endpoint', () => {
   it('returns an error if endpoint is invalid', (done) => {
-    chai
-      .request(server)
-      .get('/comments')
-      .end((err, res) => {
-        assert.strictEqual(res.status, 400);
-        done();
-      });
+    supertest.getRequest('/comments', 400, done);
+  });
+
+  it('returns 200 with the valid post comment', (done) => {
+    const COMMENT_ID = 'xlhu7p';
+    supertest.getRequest(`/comments/${COMMENT_ID}`, 200, done);
   });
 });
