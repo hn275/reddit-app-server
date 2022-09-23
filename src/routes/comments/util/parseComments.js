@@ -26,7 +26,7 @@ const parseReplies = (comments) => {
   return repliesIds; // returns all replies in an array
 };
 
-const parseComments = (commentObject) => {
+export const parseComments = (commentObject) => {
   /**
    * @param commentObject: passed by `commentRouter`
    * return: an object with api to be parsed by the client
@@ -46,8 +46,4 @@ const parseComments = (commentObject) => {
     };
   });
   return parsedComments;
-};
-
-module.exports = {
-  parseComments: parseComments,
 };

@@ -1,4 +1,4 @@
-const getSearchType = (type) => {
+export const getSearchType = (type) => {
   switch (type) {
     case 'subreddit':
       return 'sr';
@@ -8,5 +8,3 @@ const getSearchType = (type) => {
       return false;
   }
 };
-
-module.exports = getSearchType;

@@ -1,9 +1,10 @@
-const linksRouter = require('express').Router();
-const axios = require('axios');
-const REDDIT_URL = require('../url'); // fetch URL
-const parseResponse = require('./util/parseResponse.js');
+import { Router } from 'express';
+import axios from 'axios';
+import REDDIT_URL from '../url.js';
+import parseResponse from './util/parseResponse.js';
 
-const allowedTypes = ['hot', 'rising', 'new', 'top']; // allowed param
+// 'hot', 'rising', 'new', 'top'
+const linksRouter = Router();
 
 linksRouter.get('/more', async (req, res, next) => {
   try {
@@ -71,4 +72,4 @@ linksRouter.get('/:type', async (req, res, next) => {
   }
 });
 
-module.exports = linksRouter;
+export default linksRouter;

@@ -1,17 +1,21 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+import dotenv from 'dotenv';
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
-const express = require('express');
-const session = require('express-session');
-const cors = require('cors');
-const linksRouter = require('./routes/links/linksRouter');
-const commentsRouter = require('./routes/comments/commentsRouter');
-const searchRouter = require('./routes/search/searchRouter');
-const passport = require('passport');
+import express from 'express';
+import session from 'express-session';
+import cors from 'cors';
+import passport from 'passport';
+
+import linksRouter from './routes/links/linksRouter.js';
+import commentsRouter from './routes/comments/commentsRouter.js';
+import searchRouter from './routes/search/searchRouter.js';
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
 
-// Initialize express
+// // Initialize express
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -67,4 +71,4 @@ app.use((err, req, res, next) => {
 });
 app.listen(PORT, () => console.log(`server live on port ${PORT}`));
 
-module.exports = app; // For testing
+export default app; // for  testing

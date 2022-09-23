@@ -1,7 +1,9 @@
-const commentsRouter = require('express').Router();
-const axios = require('axios');
-const { parseComments } = require('./util');
-const REDDIT_URL = require('../url');
+import { Router } from 'express';
+import axios from 'axios';
+import { parseComments } from './util/parseComments.js';
+import REDDIT_URL from '../url.js';
+
+const commentsRouter = Router();
 
 /* Get all comments */
 commentsRouter.get('/:postId', async (req, res, next) => {
@@ -41,4 +43,4 @@ commentsRouter.get('/*', (req, res, next) => {
   next(error);
 });
 
-module.exports = commentsRouter;
+export default commentsRouter;
