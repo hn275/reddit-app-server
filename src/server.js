@@ -1,8 +1,12 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors');
 const linksRouter = require('./routes/links/linksRouter');
 const commentsRouter = require('./routes/comments/commentsRouter');
 const searchRouter = require('./routes/search/searchRouter');
+const passport = require('passport');
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
@@ -11,6 +15,20 @@ const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Session
+app.use(
+  session({
+    secret: process.env.SESSION,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport
+// require('./auth/passport-config')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // CORS
 app.use(cors({ origin: CLIENT_URL }));

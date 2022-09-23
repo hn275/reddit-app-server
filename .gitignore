@@ -3,3 +3,9 @@
 
 # env files
 .env
+
+# secret
+/secret/
+
+# env
+./**/*/.env
