@@ -7,10 +7,24 @@ const helmet = require('helmet');
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
 
-// Initialize express
+// // Initialize express
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Session
+app.use(
+  session({
+    secret: process.env.SESSION,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport
+// require('./auth/passport-config')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // CORS
 app.use(cors({ origin: CLIENT_URL }));
@@ -19,15 +33,30 @@ app.use(cors({ origin: CLIENT_URL }));
 app.use(helmet());
 
 app.get('/', (req, res) => {
-  res.json('heloworld');
+  // In case some server may take a couple moments to get started.
+  // This could be used to make a splash/loading screen.
+  const serverRes = {
+    status: 'ok',
+    message: 'hello world',
+  };
+  res.status(200).json(serverRes);
 });
 
 // Posts Route
-// handle `top`, `hot`, `rising`, `new`
 app.use('/posts', linksRouter);
 
 // Comments route
 app.use('/comments', commentsRouter);
+
+// Search route
+app.use('/search', searchRouter);
+
+// Invalid route
+app.use('/*', (req, res, next) => {
+  const error = new Error('Invalid endpoint');
+  error.status = 400;
+  next(error);
+});
 
 // Error handling
 app.use((err, req, res, next) => {
@@ -36,3 +65,5 @@ app.use((err, req, res, next) => {
   res.status(status).json({ message: errorMessage });
 });
 app.listen(PORT, () => console.log(`server live on port ${PORT}`));
+
+export default app; // for  testing
