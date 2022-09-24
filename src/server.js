@@ -24,14 +24,14 @@ app.use(express.urlencoded({ extended: false }));
 // Session
 app.use(
   session({
-    secret: "qHNKIq_EEQUR2drcBSM8R956Tz5Otw",
+    secret: process.env.SESSION,
     resave: false,
     saveUninitialized: false,
   })
 );
 
 // Passport
-//require('./auth/passport-config')(passport);
+// require('./auth/passport-config')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 

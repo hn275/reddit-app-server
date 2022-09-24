@@ -24,7 +24,7 @@ export const parseComments = (commentObject) => {
   const allComments = commentObject[1].data.children; 
 
   const parsedComments = allComments.map((comment) => {
-     const commentData = comment.data;
+    const commentData = comment.data;
     return {
       type: comment.kind,
       postId:commentData.parent_id,
