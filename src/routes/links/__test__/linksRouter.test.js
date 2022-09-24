@@ -29,7 +29,7 @@ describe('/posts endpoint', () => {
     const count = 5;
     const FETCH_URL = '/posts/more';
 
-    it('returns 200', (done) => {
+    it('returns 200 with the proper queries', (done) => {
       let endpoint = FETCH_URL;
       endpoint += `?after=${after}`;
       endpoint += `&type=${type}`;
