@@ -1,8 +1,17 @@
-const express = require('express');
-const cors = require('cors');
-const linksRouter = require('./routes/links/linksRouter');
-const commentsRouter = require('./routes/comments/commentsRouter');
-const helmet = require('helmet');
+import dotenv from 'dotenv';
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+} 
+
+import express from 'express';
+import session from 'express-session';
+import cors from 'cors';
+import passport from 'passport';
+
+import linksRouter from './routes/links/linksRouter.js';
+import commentsRouter from './routes/comments/commentsRouter.js';
+import searchRouter from './routes/search/searchRouter.js';
+
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
@@ -15,14 +24,14 @@ app.use(express.urlencoded({ extended: false }));
 // Session
 app.use(
   session({
-    secret: process.env.SESSION,
+    secret: "qHNKIq_EEQUR2drcBSM8R956Tz5Otw",
     resave: false,
     saveUninitialized: false,
   })
 );
 
 // Passport
-// require('./auth/passport-config')(passport);
+//require('./auth/passport-config')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 

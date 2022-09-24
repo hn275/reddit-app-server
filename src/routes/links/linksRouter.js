@@ -45,7 +45,7 @@ linksRouter.get('/more', async (req, res, next) => {
 });
 
 linksRouter.get('/:type', async (req, res, next) => {
-  try {
+  try { 
     const { type } = req.params;
 
     if (!allowedTypes.includes(type) || !type) {

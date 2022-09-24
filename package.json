@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "server for a reddit client",
   "main": "src/main.js",
+
   "scripts": {
     "start": "nodemon src/server.js",
     "test": "mocha --recursive ./src/**/*__test__/**/*"
