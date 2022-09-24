@@ -102,7 +102,7 @@ different parameters.
 ### `/search` endpoint
 
 When making a request to this endpoint, here are the required properties attached
-to the body of the request.
+to the `query strings` of the request.
 
 - `search`: string, a regular string received from the client (don't have to worry
   about parsing whitespace, the server will replace all whitespaces with `%20`).

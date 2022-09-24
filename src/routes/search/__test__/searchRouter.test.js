@@ -1,34 +1,19 @@
-const server = require('../../../server');
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const assert = require('assert');
-const expect = chai.expect;
-
-chai.use(chaiHttp);
+import { supertest } from '../../test-util.js';
 
 describe('/search endpoint', () => {
   it('returns status 400 if missing search query', (done) => {
-    chai
-      .request(server)
-      .get('/search')
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        done();
-      });
+    supertest.getRequest('/search', 400, done);
   });
 
-  it('made searches successfully', (done) => {
-    chai
-      .request(server)
-      .get('/search')
-      .send({
-        search: 'foobar',
-        type: 'subreddit',
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(200);
-        expect(res).to.have.json;
-        done();
-      });
+  it('made searches successfully with __subreddit__', (done) => {
+    supertest.getRequest('/search?search=foobar&type=subreddit', 200, done);
+  });
+
+  it('made searches successfully with __posts__', (done) => {
+    supertest.getRequest('/search?search=foobar&type=posts', 200, done);
+  });
+
+  it('returns status 400 if search query is not of the right type', (done) => {
+    supertest.getRequest('/search?search=foo&type=bar', 400, done);
   });
 });

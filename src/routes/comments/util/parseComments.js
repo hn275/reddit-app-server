@@ -15,9 +15,18 @@ const parseReplies = (replies) => {
  });
 }}; 
 
+<<<<<<< HEAD
 const parseComments = (commentObject) => {
   const allComments = commentObject[1].data.children;
   // console.log(allComments);
+=======
+export const parseComments = (commentObject) => {
+  /**
+   * @param commentObject: passed by `commentRouter`
+   * return: an object with api to be parsed by the client
+   */
+  const allComments = commentObject[1].data.children; // Again, don't worry about this line either :/
+>>>>>>> 68dc734cf1af45de010975e66329c0117095a617
 
   const parsedComments = allComments.map((comment) => {
     const commentData = comment.data;
@@ -32,8 +41,4 @@ const parseComments = (commentObject) => {
     };
   });
   return parsedComments;
-};
-
-module.exports = {
-  parseComments: parseComments,
 };

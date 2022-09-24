@@ -1,14 +1,17 @@
-const searchRouter = require('express').Router();
-const axios = require('axios');
-const getWhiteSpace = require('./utils/getWhiteSpace');
-const getSearchResults = require('./utils/getSearchResults');
-const URL = require('../url');
-const getSearchType = require('./utils/getSearchType');
+import { Router } from 'express';
+import axios from 'axios';
+import {
+  getWhiteSpace,
+  getSearchResults,
+  getSearchType,
+} from './util/index.js';
+import REDDIT_URL from '../url.js';
 
+const searchRouter = Router();
 searchRouter.get('/', async (req, res, next) => {
   try {
     // Send back error if request body is missing data
-    const { search, type } = req.body;
+    const { search, type } = req.query;
     if (!search || !type) {
       const error = new Error(
         'Missing search query, required `search` and `searchType`'
@@ -19,8 +22,14 @@ searchRouter.get('/', async (req, res, next) => {
 
     const searchFormatted = getWhiteSpace(search);
     const typeFormatted = getSearchType(type);
+    // If the search is of the wrong type
+    if (!searchFormatted || !typeFormatted) {
+      const error = new Error('Search type can only be `posts` or `subreddit`');
+      error.status = 400;
+      return next(error);
+    }
 
-    let fetchingUrl = URL;
+    let fetchingUrl = REDDIT_URL;
     fetchingUrl += '/search.json';
     fetchingUrl += `?q=${searchFormatted}`;
     fetchingUrl += `&limit=15`;
@@ -36,4 +45,4 @@ searchRouter.get('/', async (req, res, next) => {
   }
 });
 
-module.exports = searchRouter;
+export default searchRouter;

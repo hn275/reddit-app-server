@@ -1,6 +1,6 @@
 {
   "name": "reddit-client-server",
-  "type": "CommonJS",
+  "type": "module",
   "version": "1.0.0",
   "description": "server for a reddit client",
   "main": "src/main.js",
@@ -13,13 +13,17 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "passport": "^0.6.0",
+    "passport-reddit": "^1.1.0"
   },
   "devDependencies": {
     "chai": "^4.3.6",
-    "chai-http": "^4.3.0",
+    "dotenv": "^16.0.2",
     "mocha": "^10.0.0",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "supertest": "^6.2.4"
   },
   "prettier": {
     "singleQuote": true

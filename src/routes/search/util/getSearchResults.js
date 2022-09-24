@@ -17,7 +17,7 @@ const getMedia = (mediaObject) => {
   }
 };
 
-const getSearchResults = (searchArray) => {
+export const getSearchResults = (searchArray) => {
   /**
    * parsed search results from searchRouter
    * @param {array} searchArray
@@ -38,5 +38,3 @@ const getSearchResults = (searchArray) => {
     };
   });
 };
-
-module.exports = getSearchResults;
