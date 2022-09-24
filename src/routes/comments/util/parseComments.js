@@ -6,7 +6,6 @@ const parseReplies = (replies) => {
      return {
       type: reply.data.kind,
       id: reply.data.id,
-      postId:reply.data.parent_id,
       author: reply.data.author,
       bodyHtml: reply.data.body_html,
       body: reply.data.body,
@@ -23,8 +22,9 @@ export const parseComments = (commentObject) => {
    * return: an object with api to be parsed by the client
    */
   const allComments = commentObject[1].data.children; 
+
   const parsedComments = allComments.map((comment) => {
-    const commentData = comment.data;
+     const commentData = comment.data;
     return {
       type: comment.kind,
       postId:commentData.parent_id,

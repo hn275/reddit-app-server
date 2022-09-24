@@ -24,7 +24,7 @@ commentsRouter.get('/:postId', async (req, res, next) => {
   if (comment) fetchingUrl += `?comment=${comment}`;
   console.log("fetching "+ fetchingUrl)
 
-  // Fetch
+// Fetch
   try {
     const redditResponse = await axios.get(fetchingUrl);
     const parsedRedditResponse = parseComments(redditResponse.data);

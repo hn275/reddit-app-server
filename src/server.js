@@ -12,6 +12,7 @@ import linksRouter from './routes/links/linksRouter.js';
 import commentsRouter from './routes/comments/commentsRouter.js';
 import searchRouter from './routes/search/searchRouter.js';
 
+
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
 
@@ -36,6 +37,9 @@ app.use(passport.session());
 
 // CORS
 app.use(cors({ origin: CLIENT_URL }));
+
+//sucrity package
+app.use(helmet());
 
 app.get('/', (req, res) => {
   // In case some server may take a couple moments to get started.
