@@ -22,12 +22,13 @@ commentsRouter.get('/:postId', async (req, res, next) => {
   fetchingUrl += `/${postId}`;
   fetchingUrl += '.json';
   if (comment) fetchingUrl += `?comment=${comment}`;
+  console.log("fetching "+ fetchingUrl)
 
   // Fetch
   try {
     const redditResponse = await axios.get(fetchingUrl);
     const parsedRedditResponse = parseComments(redditResponse.data);
-    res.status(200).json(parsedRedditResponse);
+    res.status(200).json(parsedRedditResponse)
   } catch (error) {
     console.log(error); // TODO: delete before prod
     next(error);

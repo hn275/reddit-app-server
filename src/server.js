@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
-}
+} 
 
 import express from 'express';
 import session from 'express-session';
@@ -23,14 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 // Session
 app.use(
   session({
-    secret: process.env.SESSION,
+    secret: "qHNKIq_EEQUR2drcBSM8R956Tz5Otw",
     resave: false,
     saveUninitialized: false,
   })
 );
 
 // Passport
-// require('./auth/passport-config')(passport);
+//require('./auth/passport-config')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
