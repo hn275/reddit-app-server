@@ -9,7 +9,7 @@ const linksRouter = Router();
 
 linksRouter.get('/more', async (req, res, next) => {
   try {
-    const { after, type, count } = req.body;
+    const { after, type, count } = req.query;
     // If request missing after and type
     if (!after || !type) {
       const error = new Error('Request body requires 2 props: after, and type');

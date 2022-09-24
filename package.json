@@ -6,7 +6,8 @@
   "main": "src/main.js",
   "scripts": {
     "start": "nodemon src/server.js",
-    "test": "mocha --recursive ./src/**/*__test__/**/*"
+    "test": "mocha --recursive ./src/**/*__test__/**/*",
+    "cov": "nyc mocha ./src/*/*/__test__/*/*"
   },
   "author": "Hal",
   "license": "ISC",
