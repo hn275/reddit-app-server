@@ -17,6 +17,10 @@ Relevent data has been extracted and [documented](./docs/API.md).
 2. CORS: an Express middleware, for enabling Cross-Origin Resource Sharing.
 3. Axios: HTTP request library.
 4. Nodemon (dev dependency): hot reload server on bufwrite.
+5. Express-sesions: for local sessions
+6. Passsport: authentication middleware;
+7. Dotnev: a zero-dependancy module for adding veriables to .env files;
+8. Helmet: an Express sucurity middleware;
 
 Don't forget to `npm i` after cloning to install dependencies :).
 
