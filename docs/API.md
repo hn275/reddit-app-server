@@ -113,3 +113,20 @@ to the `query strings` of the request.
 #### Response
 
 Refer to [posts](#posts) response.
+
+## Subreddits
+
+### Available endpoints
+
+- `/sr/popular`
+- `/sr/new`
+- `/sr/gold`
+- `/sr/default`
+
+### Response
+
+API responses is an array of objects:
+
+- `id`: useful to make a all posts search query for a specific subreddit.
+- `display_name`: to display, as the format of `r/:whatever`.
+- `subscribers`: number of subscribers.
