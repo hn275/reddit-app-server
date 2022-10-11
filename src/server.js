@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
-} 
+}
 
 import express from 'express';
 import session from 'express-session';
@@ -12,8 +12,7 @@ import helmet from 'helmet';
 import linksRouter from './routes/links/linksRouter.js';
 import commentsRouter from './routes/comments/commentsRouter.js';
 import searchRouter from './routes/search/searchRouter.js';
-
-
+import subredditRouter from './routes/subreddits/subredditRouter.js';
 
 const PORT = process.env.PORT || 3001;
 const CLIENT_URL = 'http://localhost:3000'; // Change this once frontend app is deployed
@@ -61,6 +60,9 @@ app.use('/comments', commentsRouter);
 
 // Search route
 app.use('/search', searchRouter);
+
+// Subreddit route
+app.use('/sr', subredditRouter);
 
 // Invalid route
 app.use('/*', (req, res, next) => {
