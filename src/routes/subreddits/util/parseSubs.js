@@ -10,7 +10,7 @@ export const parseSubs = (response) => {
 
     return {
       id: data.name,
-      diplay_name: data.display_name_prefixed,
+      display_name: data.display_name_prefixed,
       subscribers: data.subscribers,
     };
   });
